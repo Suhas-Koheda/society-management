@@ -4,6 +4,7 @@ import { AuthProvider } from './context/AuthContext';
 import { useAuth } from './hooks/useAuth';
 import { ToastProvider } from './components/ui/Toast';
 import { AppLayout } from './components/layout/AppLayout';
+import { Landing } from './pages/Landing';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
 import { ResidentDashboard } from './pages/resident/Dashboard';
@@ -32,7 +33,7 @@ function ProtectedRoute({ children, adminOnly = false }: { children: React.React
 
   if (loading) return <Spinner />;
   if (!user) return <Navigate to="/login" replace />;
-  if (adminOnly && user.role !== 'admin') return <Navigate to="/" replace />;
+  if (adminOnly && user.role !== 'admin') return <Navigate to="/dashboard" replace />;
 
   return <>{children}</>;
 }
@@ -44,8 +45,9 @@ function AppRoutes() {
 
   return (
     <Routes>
-      <Route path="/login" element={user ? <Navigate to={user.role === 'admin' ? '/admin' : '/'} replace /> : <Login />} />
-      <Route path="/register" element={user ? <Navigate to={user.role === 'admin' ? '/admin' : '/'} replace /> : <Register />} />
+      <Route path="/" element={<Landing />} />
+      <Route path="/login" element={user ? <Navigate to={user.role === 'admin' ? '/admin' : '/dashboard'} replace /> : <Login />} />
+      <Route path="/register" element={user ? <Navigate to={user.role === 'admin' ? '/admin' : '/dashboard'} replace /> : <Register />} />
 
       <Route
         element={
@@ -54,7 +56,7 @@ function AppRoutes() {
           </ProtectedRoute>
         }
       >
-        <Route path="/" element={<ResidentDashboard />} />
+        <Route path="/dashboard" element={<ResidentDashboard />} />
         <Route path="/complaints" element={<ComplaintsList />} />
         <Route path="/complaints/new" element={<ComplaintNew />} />
         <Route path="/complaints/:id" element={<ComplaintDetail />} />

@@ -8,7 +8,7 @@ export function AppLayout() {
   const isAdmin = user?.role === 'admin';
 
   const residentLinks = [
-    { to: '/', label: 'Dashboard' },
+    { to: '/dashboard', label: 'Dashboard' },
     { to: '/complaints', label: 'My Complaints' },
     { to: '/complaints/new', label: 'New Complaint' },
     { to: '/notices', label: 'Notices' },
@@ -28,7 +28,7 @@ export function AppLayout() {
     <div className="layout">
       <header className="header">
         <div className="header__left">
-          <Link to="/" className="header__logo">
+          <Link to={user ? (user.role === 'admin' ? '/admin' : '/dashboard') : '/'} className="header__logo">
             SOCIETY TRACKER
           </Link>
         </div>

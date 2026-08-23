@@ -1,0 +1,163 @@
+.landing {
+  min-height: 100vh;
+  background: var(--black);
+  color: var(--white);
+}
+
+/* Nav */
+.landing__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--sp-3) var(--sp-4);
+  border-bottom: 3px solid var(--white);
+}
+
+.landing__logo {
+  font-family: var(--font-headline);
+  font-size: 18px;
+}
+
+.landing__nav-links {
+  display: flex;
+  gap: var(--sp-2);
+}
+
+/* Hero */
+.landing__hero {
+  padding: var(--sp-8) var(--sp-4) var(--sp-7);
+  max-width: 900px;
+}
+
+.landing__title {
+  font-size: clamp(48px, 10vw, 120px);
+  line-height: 0.95;
+  margin-bottom: var(--sp-4);
+}
+
+.landing__subtitle {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: #999;
+  margin-bottom: var(--sp-5);
+  max-width: 400px;
+}
+
+.landing__cta {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+/* Features */
+.landing__features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 3px solid var(--white);
+}
+
+.landing__feature {
+  padding: var(--sp-5) var(--sp-4);
+  border-right: 3px solid var(--white);
+}
+
+.landing__feature:last-child {
+  border-right: none;
+}
+
+.landing__feature-number {
+  font-family: var(--font-mono);
+  font-size: 48px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: var(--sp-3);
+}
+
+.landing__feature-title {
+  font-family: var(--font-headline);
+  font-size: 18px;
+  margin-bottom: var(--sp-2);
+}
+
+.landing__feature-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #999;
+}
+
+/* Roles */
+.landing__roles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 3px solid var(--white);
+}
+
+.landing__role-card {
+  padding: var(--sp-5) var(--sp-4);
+  border-right: 3px solid var(--white);
+}
+
+.landing__role-card--admin {
+  border-right: none;
+  background: var(--white);
+  color: var(--black);
+}
+
+.landing__role-title {
+  font-family: var(--font-headline);
+  font-size: 24px;
+  margin-bottom: var(--sp-3);
+}
+
+.landing__role-list {
+  list-style: none;
+}
+
+.landing__role-list li {
+  font-size: 14px;
+  padding: var(--sp-2) 0;
+  border-bottom: 1px solid #333;
+}
+
+.landing__role-card--admin .landing__role-list li {
+  border-bottom-color: #ccc;
+}
+
+/* Footer */
+.landing__footer {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--sp-3) var(--sp-4);
+  border-top: 3px solid var(--white);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .landing__features {
+    grid-template-columns: 1fr;
+  }
+
+  .landing__feature {
+    border-right: none;
+    border-bottom: 3px solid var(--white);
+  }
+
+  .landing__roles {
+    grid-template-columns: 1fr;
+  }
+
+  .landing__role-card {
+    border-right: none;
+    border-bottom: 3px solid var(--white);
+  }
+
+  .landing__cta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
