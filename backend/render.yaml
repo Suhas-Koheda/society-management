@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: society-tracker-api
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12"
+      - key: JWT_SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        value: sqlite:////tmp/society.db
+      - key: ACCESS_TOKEN_EXPIRE_MINUTES
+        value: "60"
+      - key: MAX_UPLOAD_SIZE_MB
+        value: "5"
+      - key: EMAIL_PROVIDER
+        value: console
+      - key: EMAIL_FROM
+        value: society-tracker@example.com

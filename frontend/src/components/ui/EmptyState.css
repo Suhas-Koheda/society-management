@@ -1,0 +1,13 @@
+.empty-state {
+  text-align: center;
+  padding: var(--sp-6) var(--sp-3);
+  border: 3px dashed var(--border-default);
+}
+
+.empty-state__text {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--content-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}

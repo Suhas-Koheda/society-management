@@ -1,0 +1,24 @@
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: var(--sp-3);
+}
+
+.photo-grid__item {
+  border: 3px solid var(--black);
+}
+
+.photo-grid__img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.photo-grid__date {
+  display: block;
+  padding: var(--sp-1) var(--sp-2);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  background: var(--surface-sunken);
+  border-top: 2px solid var(--black);
+}
