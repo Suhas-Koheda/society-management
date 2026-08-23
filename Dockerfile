@@ -15,7 +15,6 @@ COPY backend/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY backend/ .
-RUN alembic upgrade head
 
 COPY --from=frontend-build /app/dist /app/frontend-dist
 COPY nginx-railway.conf /etc/nginx/sites-available/default
