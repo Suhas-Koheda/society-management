@@ -1,4 +1,6 @@
+from pathlib import Path
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
 
 from app.routers import admin, auth, complaints, notices
 from app.routers.admin import admin_users_router
@@ -50,6 +52,9 @@ app.include_router(admin_users_router, prefix="/api/v1")
 
 @app.get("/health")
 def health_check():
-    return {
-        "status": "ok"
-    }
+    return {"status": "ok"}
+
+
+STATIC_DIR = Path(__file__).resolve().parent.parent / "static"
+if STATIC_DIR.exists():
+    app.mount("/", StaticFiles(directory=str(STATIC_DIR), html=True), name="static")
